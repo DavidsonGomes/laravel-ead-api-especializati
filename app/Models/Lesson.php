@@ -24,4 +24,9 @@ class Lesson extends Model
     {
         return $this->belongsTo(Module::class);
     }
+
+    public function suports()
+    {
+        # code...
+    }
 }
