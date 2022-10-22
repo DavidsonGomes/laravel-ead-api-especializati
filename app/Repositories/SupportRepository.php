@@ -30,7 +30,7 @@ class SupportRepository
 
                 if (isset($filters['filter'])) {
                     $filter = $filters['filter'];
-                    $query->where('filter', 'LIKE', "%{$filter}%");
+                    $query->where('description', 'LIKE', "%{$filter}%");
                 }
             })
             ->get();
