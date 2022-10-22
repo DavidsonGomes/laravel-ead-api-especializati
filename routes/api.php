@@ -3,7 +3,8 @@
 use App\Http\Controllers\Api\{
     CourseController,
     LessonController,
-    ModuleController
+    ModuleController,
+    SupportController
 };
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,5 @@ Route::get('/courses/{id}/modules', [ModuleController::class, 'index'])->name('m
 
 Route::get('/modules/{id}/lessons', [LessonController::class, 'index'])->name('lessons.index');
 Route::get('/lessons/{id}', [LessonController::class, 'show'])->name('lessons.show');
+
+Route::get('/supports', [SupportController::class, 'index'])->name('supports.index');
