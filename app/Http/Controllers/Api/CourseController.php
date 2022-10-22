@@ -18,11 +18,15 @@ class CourseController extends Controller
 
     public function index()
     {
-        return CourseResource::collection($this->repository->getAllCourses());
+        $courses = $this->repository->getAllCourses();
+
+        return CourseResource::collection($courses);
     }
 
     public function show($id)
     {
-        return new CourseResource($this->repository->getCourse($id));
+        $course = $this->repository->getCourse($id);
+
+        return new CourseResource($course);
     }
 }
