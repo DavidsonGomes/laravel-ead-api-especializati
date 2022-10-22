@@ -16,12 +16,13 @@ class Support extends Model
 
     protected $fillable = [
         'description',
-        'status'
+        'status',
+        'lesson_id'
     ];
 
     public $statusOptions = [
         'P' => 'Pendente, Aguardando Professor',
-        'A' => 'Aaguardando Aluno',
+        'A' => 'Aguardando Aluno',
         'C' => 'Concluído'
     ];
 
