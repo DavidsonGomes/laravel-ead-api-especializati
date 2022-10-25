@@ -18,7 +18,7 @@ class CourseRepository
         return $this->entity->query()->get();
     }
 
-    public function getCourse(String $id)
+    public function getCourse(string $id)
     {
         return $this->entity->query()->findOrFail($id);
     }

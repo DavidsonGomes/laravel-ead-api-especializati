@@ -18,7 +18,7 @@ class LessonRepository
         return $this->entity->query()->findOrFail($id);
     }
 
-    public function getLessonsByModuleId(String $moduleId)
+    public function getLessonsByModuleId(string $moduleId)
     {
         return $this->entity
             ->query()

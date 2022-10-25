@@ -13,7 +13,7 @@ class ModuleRepository
         $this->entity = $model;
     }
 
-    public function getModulesByCourseId(String $courseId)
+    public function getModulesByCourseId(string $courseId)
     {
         return $this->entity
             ->query()
