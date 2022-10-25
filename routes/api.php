@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\{
     ReplySupportController,
     SupportController
 };
+use App\Http\Controllers\Api\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,6 +15,9 @@ Route::get('/', function () {
         'success' => true
     ]);
 });
+
+// Login
+Route::post('/auth', [AuthController::class, 'auth'])->name('login');
 
 // Courses
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
