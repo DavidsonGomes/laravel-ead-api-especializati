@@ -27,6 +27,7 @@ Route::get('/modules/{id}/lessons', [LessonController::class, 'index'])->name('l
 Route::get('/lessons/{id}', [LessonController::class, 'show'])->name('lessons.show');
 
 // Supports
+Route::get('/my-supports', [SupportController::class, 'mySupports'])->name('supports.my-supports');
 Route::get('/supports', [SupportController::class, 'index'])->name('supports.index');
 Route::post('/supports', [SupportController::class, 'store'])->name('supports.store');
 
