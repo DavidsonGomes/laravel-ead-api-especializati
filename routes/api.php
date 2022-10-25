@@ -32,4 +32,4 @@ Route::get('/supports', [SupportController::class, 'index'])->name('supports.ind
 Route::post('/supports', [SupportController::class, 'store'])->name('supports.store');
 
 // Reply Supports
-Route::post('/supports/{id}/replies', [ReplySupportController::class, 'createReply'])->name('supports.create-reply');
+Route::post('replies', [ReplySupportController::class, 'createReply'])->name('replies.create-reply');
