@@ -2,9 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\ReplySupport;
 use App\Models\Support;
-use App\Models\User;
 use App\Repositories\Traits\RepositoryTrait;
 
 class SupportRepository
