@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\ReplySupport;
 use App\Models\Support;
 use App\Models\User;
 
@@ -16,7 +17,6 @@ class SupportRepository
 
     public function getSupports(array $filters = [])
     {
-
         return $this->getUserAuth()
             ->supports()
             ->where(function ($query) use ($filters) {
@@ -47,6 +47,23 @@ class SupportRepository
             ]);
 
         return $support;
+    }
+
+    public function createReplyToSupportId(String $supportId, array $data)
+    {
+        $user = $this->getUserAuth();
+
+        return $this->getSupport($supportId)
+            ->replies()
+            ->create([
+                'user_id' => $user->id,
+                'description' => $data['description']
+            ]);
+    }
+
+    public function getSupport(String $id): Support
+    {
+        return $this->entity->query()->findOrFail($id);
     }
 
     private function getUserAuth(): User

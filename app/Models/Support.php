@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Support extends Model
 {
-    use HasFactory, UuidTrait;
+    use HasFactory;
+    use UuidTrait;
 
     public $incrementing = false;
 
@@ -34,5 +35,10 @@ class Support extends Model
     public function lesson()
     {
         return $this->belongsTo(Lesson::class);
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(ReplySupport::class);
     }
 }

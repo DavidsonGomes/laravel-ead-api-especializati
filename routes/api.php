@@ -29,3 +29,6 @@ Route::get('/lessons/{id}', [LessonController::class, 'show'])->name('lessons.sh
 // Supports
 Route::get('/supports', [SupportController::class, 'index'])->name('supports.index');
 Route::post('/supports', [SupportController::class, 'store'])->name('supports.store');
+
+// Reply Supports
+Route::post('/supports/{id}/replies', [SupportController::class, 'createReply'])->name('supports.create-reply');
