@@ -37,6 +37,9 @@ Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->mid
 // Forgot Password
 Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLink'])->name('forgot-password')->middleware('guest');
 
+// Reset Password
+Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->name('reset-password')->middleware('guest');
+
 /**
  * Authenticated
  */
