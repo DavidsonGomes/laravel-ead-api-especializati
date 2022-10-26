@@ -3,10 +3,13 @@
 namespace Tests\Feature\Api\Auth;
 
 use App\Models\User;
+use Tests\Feature\Api\UtilsTrait;
 use Tests\TestCase;
 
 class AuthTest extends TestCase
 {
+    use UtilsTrait;
+
     public function test_fail_auth()
     {
         $response = $this->postJson('/auth', []);
@@ -36,12 +39,7 @@ class AuthTest extends TestCase
 
     public function test_logout()
     {
-        $user = User::factory()->create();
-        $token = $user->createToken('test')->plainTextToken;
-
-        $response = $this->postJson('/logout', [], [
-            'Authorization' => "Bearer {$token}",
-        ]);
+        $response = $this->postJson('/logout', [], $this->defaultHeaders());
 
         $response->assertStatus(200);
     }
@@ -55,12 +53,7 @@ class AuthTest extends TestCase
 
     public function test_get_me()
     {
-        $user = User::factory()->create();
-        $token = $user->createToken('test')->plainTextToken;
-
-        $response = $this->getJson('/profile', [
-            'Authorization' => "Bearer {$token}",
-        ]);
+        $response = $this->getJson('/profile', $this->defaultHeaders());
 
         $response->assertStatus(200);
     }
