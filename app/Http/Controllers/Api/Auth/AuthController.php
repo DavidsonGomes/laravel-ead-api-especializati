@@ -41,7 +41,7 @@ class AuthController extends Controller
 
     public function logout()
     {
-        $user = auth()->user();
+        $user = User::find(auth()->user()->id);
 
         $user->tokens()->delete();
 
