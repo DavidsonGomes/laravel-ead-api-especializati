@@ -37,7 +37,8 @@ class ViewTest extends TestCase
             $this->defaultHeaders()
         );
 
-        $response->assertStatus(422);
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors(['lesson']);
     }
 
     public function test_view_lesson()
