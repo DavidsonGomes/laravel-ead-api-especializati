@@ -27,7 +27,7 @@ Route::get('/', function () {
 Route::post('/auth', [AuthController::class, 'auth'])->name('login');
 
 // Logout
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth:sanctum');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth:sanctum');
 
 // Me
 Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth:sanctum');
