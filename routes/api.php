@@ -22,6 +22,7 @@ Route::get('/', function () {
 /**
  * Auth
  */
+
 // Login
 Route::post('/auth', [AuthController::class, 'auth'])->name('login');
 
@@ -34,6 +35,7 @@ Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->mid
 /**
  * Reset Password
  */
+
 // Forgot Password
 Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLink'])->name('forgot-password')->middleware('guest');
 
@@ -43,6 +45,7 @@ Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword']
 /**
  * Authenticated
  */
+
 Route::middleware(['auth:sanctum'])->group(function () {
     // Courses
     Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
@@ -54,6 +57,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Lessons
     Route::get('/modules/{id}/lessons', [LessonController::class, 'index'])->name('lessons.index');
     Route::get('/lessons/{id}', [LessonController::class, 'show'])->name('lessons.show');
+
+    Route::post('/lessons/viewed', [LessonController::class, 'view'])->name('lessons.view');
 
     // Supports
     Route::get('/my-supports', [SupportController::class, 'mySupports'])->name('supports.my-supports');

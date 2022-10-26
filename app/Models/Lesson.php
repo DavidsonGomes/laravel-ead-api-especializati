@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
-    use HasFactory, UuidTrait;
+    use HasFactory;
+    use UuidTrait;
 
     public $incrementing = false;
 
@@ -25,8 +26,17 @@ class Lesson extends Model
         return $this->belongsTo(Module::class);
     }
 
-    public function suports()
+    public function supports()
     {
-        # code...
+        return $this->hasMany(Support::class);
+    }
+
+    public function views()
+    {
+        return $this->hasMany(View::class)->where(function ($query) {
+            if (auth()->check()) {
+                $query->where('user_id', auth()->user()->id);
+            }
+        });
     }
 }
