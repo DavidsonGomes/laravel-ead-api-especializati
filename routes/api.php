@@ -37,6 +37,9 @@ Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->mid
 // Forgot Password
 Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLink'])->name('forgot-password')->middleware('guest');
 
+/**
+ * Authenticated
+ */
 Route::middleware(['auth:sanctum'])->group(function () {
     // Courses
     Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
