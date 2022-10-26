@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::post('/auth', [AuthController::class, 'auth'])->name('login');
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
     // Courses
     Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
     Route::get('/courses/{id}', [CourseController::class, 'show'])->name('courses.show');
