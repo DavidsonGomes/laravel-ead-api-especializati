@@ -153,21 +153,6 @@ class ResetPasswordTest extends TestCase
 
     public function test_password_reset()
     {
-        $user = $this->createUser();
-        $token = $this->createUserToken($user);
-
-        $response = $this->postJson('/reset-password', [
-            'token' => $token,
-            'email' => $user->email,
-            'password' => 123456,
-            'password_confirmation' => 123456,
-        ]);
-
-        $response->assertStatus(422);
-    }
-
-    public function test_the_user_can_update_their_password()
-    {
         $user = User::factory()->create([
             'email' => 'user@domain.com',
             'password' => Hash::make('oldpassword')
