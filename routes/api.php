@@ -19,9 +19,14 @@ Route::get('/', function () {
 // Login
 Route::post('/auth', [AuthController::class, 'auth'])->name('login');
 
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Logout
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth:sanctum');
+
+// Me
+Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth:sanctum');
+
+Route::middleware(['auth:sanctum'])->group(function () {
     // Courses
     Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
     Route::get('/courses/{id}', [CourseController::class, 'show'])->name('courses.show');
