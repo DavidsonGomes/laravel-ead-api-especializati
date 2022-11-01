@@ -26,6 +26,7 @@ class LessonRepository
     {
         return $this->entity
             ->query()
+            ->with('supports.replies')
             ->where('module_id', $moduleId)
             ->get();
     }
