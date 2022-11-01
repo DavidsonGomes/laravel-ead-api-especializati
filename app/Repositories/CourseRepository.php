@@ -15,11 +15,11 @@ class CourseRepository
 
     public function getAllCourses()
     {
-        return $this->entity->query()->get();
+        return $this->entity->query()->with('modules.lessons.views')->get();
     }
 
     public function getCourse(string $id)
     {
-        return $this->entity->query()->findOrFail($id);
+        return $this->entity->query()->with('modules.lessons.views')->findOrFail($id);
     }
 }

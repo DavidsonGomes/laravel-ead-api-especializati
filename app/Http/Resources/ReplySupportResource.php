@@ -18,6 +18,7 @@ class ReplySupportResource extends JsonResource
             'id' => $this->id,
             'description' => $this->description,
             'user' => new UserResource($this->user),
+            'support' => new SupportResource($this->whenLoaded('support')),
         ];
     }
 }

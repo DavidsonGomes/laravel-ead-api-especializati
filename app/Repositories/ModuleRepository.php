@@ -17,6 +17,7 @@ class ModuleRepository
     {
         return $this->entity
             ->query()
+            ->with('lessons.views')
             ->where('course_id', $courseId)
             ->get();
     }

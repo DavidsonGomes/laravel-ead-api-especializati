@@ -21,9 +21,9 @@ class SupportResource extends JsonResource
             'status_label' => $this->statusOptions[$this->status] ?? 'Not Found',
             'description' => $this->description,
             'user' => new UserResource($this->user),
-            'lesson' => new LessonResource($this->lesson),
+            'lesson' => new LessonResource($this->whenLoaded('lessons')),
             'dt_updated' => Carbon::make($this->updated_at)->format('d/m/Y H:i:s'),
-            'replies' => ReplySupportResource::collection($this->replies),
+            'replies' => ReplySupportResource::collection($this->whenLoaded('replies')),
         ];
     }
 }
